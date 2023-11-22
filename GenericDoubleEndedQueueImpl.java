@@ -32,5 +32,22 @@ public class GenericDoubleEndedQueueImpl<T> implements GenericDoubleEndedQueue<T
         return size == 0; // Returns true if the queue size is 0
     }
 
-    // ... Additional methods would go here ...
+    public void addFirst(T item) {
+        // Create a new node with the provided item
+        Node<T> newNode = new Node<>(item);
+    
+        // If the queue is empty, set both head and tail to the new node
+        if (isEmpty()) {
+            head = tail = newNode;
+        } else {
+            // If the queue is not empty, insert the new node at the beginning
+            newNode.next = head; // Set the new node's next to the current head
+            head.prev = newNode; // Set the current head's previous to the new node
+            head = newNode;      // Update the head to be the new node
+        }
+    
+        // Increment the size of the queue
+        size++;
+    }
+    
 }
