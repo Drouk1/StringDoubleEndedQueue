@@ -98,6 +98,32 @@ public class GenericDoubleEndedQueueImpl<T> implements GenericDoubleEndedQueue<T
         size++;
     }
     
-
+    public T removeLast() throws NoSuchElementException {
+        // Check if the queue is empty and throw an exception if it is
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        }
+    
+        // Store the data from the tail node to return later
+        T item = tail.data;
+    
+        // Move the tail pointer to the previous node
+        tail = tail.prev;
+    
+        // If the queue is now empty after removal, set head to null
+        if (tail == null) {
+            head = null;
+        } else {
+            // Otherwise, disconnect the new tail from the removed node
+            tail.next = null;
+        }
+    
+        // Decrement the size of the queue
+        size--;
+    
+        // Return the data of the removed node
+        return item;
+    }
+    
     
 }
