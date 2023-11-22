@@ -80,15 +80,24 @@ public class GenericDoubleEndedQueueImpl<T> implements GenericDoubleEndedQueue<T
     
     // Adds an item to the end of the queue
     public void addLast(T item) {
+        // Create a new node with the given item
         Node<T> newNode = new Node<>(item);
+    
+        // Check if the queue is empty
         if (isEmpty()) {
-            head = tail = newNode; // For an empty queue, new node becomes both head and tail
+            // If the queue is empty, the new node becomes both head and tail
+            head = tail = newNode;
         } else {
-            tail.next = newNode;   // Link the new node with the current tail
-            newNode.prev = tail;   // Set the new node's previous link to the current tail
-            tail = newNode;        // Update the tail to the new node
+            // If the queue is not empty, insert the new node at the end
+            tail.next = newNode; // Link the current tail's next to the new node
+            newNode.prev = tail; // Link the new node's previous to the current tail
+            tail = newNode;      // Update the tail to be the new node
         }
+    
+        // Increment the size of the queue
         size++;
     }
+    
+
     
 }
