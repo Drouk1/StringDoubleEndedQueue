@@ -143,7 +143,7 @@ public class GenericDoubleEndedQueueImpl<T> implements GenericDoubleEndedQueue<T
     
     // Prints all items in the queue from front to end
     public void printQueue(PrintStream stream) {
-        Node<T> current = head;
+        Node<T> current = head; 
         while (current != null) {
             stream.println(current.data);
             current = current.next;
