@@ -124,6 +124,21 @@ public class GenericDoubleEndedQueueImpl<T> implements GenericDoubleEndedQueue<T
         // Return the data of the removed node
         return item;
     }
-    
+
+    // Returns the first item from the queue without removing it
+    public T getFirst() throws NoSuchElementException {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        }
+        return head.data;
+    }
+
+    // Returns the last item from the queue without removing it
+    public T getLast() throws NoSuchElementException {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty");
+        }
+        return tail.data;
+    }
     
 }
